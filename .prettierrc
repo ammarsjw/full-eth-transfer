@@ -1,0 +1,15 @@
+{
+    "arrowParens": "always",
+    "bracketSpacing": true,
+    "importOrderTypeScriptVersion": "5.0.0",
+    "plugins": [
+        "@ianvs/prettier-plugin-sort-imports",
+        "prettier-package-json"
+    ],
+    "printWidth": 120,
+    "semi": true,
+    "singleQuote": false,
+    "tabWidth": 4,
+    "trailingComma": "none",
+    "useTabs": false
+}

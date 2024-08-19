@@ -1,0 +1,23 @@
+{
+    "name": "full-eth-transfer",
+    "version": "1.0.0",
+    "description": "Fully transfers native tokens without leaving any residual amount",
+    "scripts": {
+        "transfer": "hardhat run scripts/full-eth-transfer.js",
+        "format": "prettier --check --write **/*.js --config .prettierrc"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/ammarsjw/full-eth-transfer"
+    },
+    "author": "Ammar Salahuddin",
+    "license": "MIT",
+    "devDependencies": {
+        "@ianvs/prettier-plugin-sort-imports": "^4.1.1",
+        "@nomicfoundation/hardhat-toolbox": "^3.0.0",
+        "dotenv": "^16.3.1",
+        "hardhat": "^2.18.1",
+        "prettier": "^3.2.5",
+        "prettier-package-json": "^2.8.0"
+    }
+}
