@@ -1,34 +1,25 @@
 const hre = require("hardhat");
 
 async function main() {
-    // Getting chain data.
-    const chainId = (await hre.ethers.provider.getNetwork()).chainId.toString();
+    // Checking gas price.
+    const gasPriceUpperBound = process.env.GAS_PRICE_UPPER_BOUND;
+    const gasPrice = await getGasPrice(gasPriceUpperBound);
 
-    // Getting sender as a signer and recipient as an address.
+    // Logging chain data.
+    console.log("ChainId:", (await hre.ethers.provider.getNetwork()).chainId.toString());
+
+    // Getting from and to.
     const signers = await hre.ethers.getSigners();
     const from = signers[0];
     const to = process.env.TO_ADDRESS;
 
-    // Getting sender's balance.
+    // Getting from's balance.
     const balance = await hre.ethers.provider.getBalance(from.address);
-
-    // Checking and getting gas price.
-    const desiredGasPrice = process.env.MAX_GAS_PRICE;
-    const gasPrice = await getGasPrice(desiredGasPrice);
-
-    // Logging chain data.
-    console.log("ChainId:", chainId);
 
     // Calculating amount.
     const gasUsed = hre.ethers.toBigInt(21000);
     const transactionFee = gasPrice * gasUsed;
     const amount = balance - transactionFee;
-
-    // Double checking gas price.
-    if ((await hre.ethers.provider.getFeeData()).gasPrice != gasPrice) {
-        console.log((await hre.ethers.provider.getFeeData()).gasPrice);
-        throw "Gas price mismatch";
-    }
 
     // Sending transacation.
     await from.sendTransaction({
@@ -50,13 +41,13 @@ async function main() {
     process.exit();
 }
 
-async function getGasPrice(desiredGasPrice) {
+async function getGasPrice(gasPriceUpperBound) {
     let feeData = await hre.ethers.provider.getFeeData();
     let gasPrice = hre.ethers.formatUnits(feeData.gasPrice, "gwei");
     console.log("Gas Price:", gasPrice, "Gwei");
 
-    if (desiredGasPrice != "") {
-        while (gasPrice > desiredGasPrice) {
+    if (gasPriceUpperBound != "0") {
+        while (gasPrice > gasPriceUpperBound) {
             feeData = await hre.ethers.provider.getFeeData();
 
             if (gasPrice != hre.ethers.formatUnits(feeData.gasPrice, "gwei")) {

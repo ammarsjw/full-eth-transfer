@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "description": "Fully transfers native tokens without leaving any residual amount",
     "scripts": {
-        "transfer": "hardhat run scripts/full-eth-transfer.js",
+        "start": "hardhat run scripts/full-eth-transfer.js",
         "format": "prettier --check --write **/*.js --config .prettierrc"
     },
     "repository": {
