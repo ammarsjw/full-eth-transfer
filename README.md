@@ -14,7 +14,8 @@ Open a terminal in your workspace and then type in the following commands to ful
 
 ### Setup environment variables
 
-Set the `URL`, `FROM_PRIVATE_KEY` and `TO_ADDRESS` as environment variables. You can achieve this by first creating a file named **.env** at the root of your project. Then copy the contents of the **.env.example** file into your **.env** file. Finally fill in the variables for the relevant network you are deploying to.
+Set the `URL`, `FROM_PRIVATE_KEY` and `TO_ADDRESS` as environment variables.<br>
+You can achieve this by first creating a file named **.env** at the root of your project. Then copy the contents of the **.env.example** file into your **.env** file. Finally fill in the variables for the relevant network you are deploying to.
 
 `URL`: This is the RPC URL of your desired network. Most online resources can provide these for free.<br>
 `FROM_PRIVATE_KEY`: This is the private key of the account that contains the native tokens.<br>
