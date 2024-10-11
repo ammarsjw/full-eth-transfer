@@ -18,7 +18,7 @@ Set the `URL`, `FROM_PRIVATE_KEY` and `TO_ADDRESS` as environment variables. You
 
 `URL`: This is the RPC URL of your desired network. Most online resources can provide these for free.<br>
 `FROM_PRIVATE_KEY`: This is the private key of the account that contains the native tokens.<br>
-`GAS_PRICE_UPPER_BOUND` **[Optional]**: This is the maximum gas price you are willing to pay for the transaction. This environment variable can be set to `0` if no limit needs to be imposed on gas price. The script will recheck gas price and only execute if it is less than or equal to the given amount.<br>
+`GAS_PRICE_UPPER_BOUND` **[Optional]**: This is the maximum gas price you are willing to pay for the transaction. This environment variable can be left empty or set to `0` if no limit needs to be imposed on gas price. The script will recheck gas price and only execute if it is less than or equal to the given amount.<br>
 `TO_ADDRESS`: This is the public address of the recipient of the aforementioned native tokens.
 
 ### Run the script

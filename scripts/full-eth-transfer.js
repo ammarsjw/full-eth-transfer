@@ -46,7 +46,7 @@ async function getGasPrice(gasPriceUpperBound) {
     let gasPrice = hre.ethers.formatUnits(feeData.gasPrice, "gwei");
     console.log("Gas Price:", gasPrice, "Gwei");
 
-    if (gasPriceUpperBound != "0") {
+    if (gasPriceUpperBound != "" && gasPriceUpperBound != "0") {
         while (gasPrice > gasPriceUpperBound) {
             feeData = await hre.ethers.provider.getFeeData();
 
