@@ -1,7 +1,7 @@
 const hre = require("hardhat");
 
 async function main() {
-    // Checking gas price.
+    // Checking and getting gas price.
     const gasPriceUpperBound = process.env.GAS_PRICE_UPPER_BOUND;
     const gasPrice = await getGasPrice(gasPriceUpperBound);
 
@@ -16,24 +16,24 @@ async function main() {
     // Getting from's balance.
     const balance = await hre.ethers.provider.getBalance(from.address);
 
-    // Calculating amount.
+    // Calculating value.
     const gasUsed = hre.ethers.toBigInt(21000);
     const transactionFee = gasPrice * gasUsed;
-    const amount = balance - transactionFee;
+    const value = balance - transactionFee;
 
     // Sending transacation.
     await from.sendTransaction({
         to: to,
         gasPrice: gasPrice,
         gasLimit: 21000,
-        value: amount
+        value: value
     });
 
     // Logging data.
     console.log("Transferred");
     console.log("From           :", from.address);
     console.log("To             :", to);
-    console.log("Value          :", amount.toString());
+    console.log("Value          :", value.toString());
     console.log("Initial Balance:", balance.toString());
     console.log("Transaction Fee:", transactionFee.toString());
 

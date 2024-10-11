@@ -4,7 +4,7 @@
     "description": "Fully transfers native tokens without leaving any residual amount",
     "scripts": {
         "start": "hardhat run scripts/full-eth-transfer.js",
-        "format": "prettier --check --write **/*.js --config .prettierrc"
+        "format": "prettier --check --write {scripts/,}*.js --config .prettierrc"
     },
     "repository": {
         "type": "git",
